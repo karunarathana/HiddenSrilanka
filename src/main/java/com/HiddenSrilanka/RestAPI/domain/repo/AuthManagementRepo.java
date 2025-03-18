@@ -20,7 +20,7 @@ public interface AuthManagementRepo extends JpaRepository<UserManagementEntity,I
     int updatePasswordByUserEmail(String password, String email);
 
     @Query(value = "SELECT COUNT(*) > 0 FROM t_user WHERE email = :email", nativeQuery = true)
-    Long existsByEmailCount(String email);
+    int existsByEmailCount(String email);
 
     @Query(value = "SELECT * FROM t_user WHERE email = :email LIMIT 1", nativeQuery = true)
     Optional<UserManagementEntity> getSingleUser(String email);

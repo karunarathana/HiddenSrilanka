@@ -21,7 +21,7 @@
             overflow: hidden;
         }
         .email-header {
-            background-color: #007BFF;
+            background-color: #18be09;
             color: white;
             text-align: center;
             padding: 20px;
@@ -35,7 +35,7 @@
         .otp-code {
             font-size: 28px;
             font-weight: bold;
-            color: #007BFF;
+            color: #2db112;
             margin: 20px 0;
         }
         .email-footer {
@@ -49,13 +49,13 @@
             display: inline-block;
             padding: 10px 20px;
             color: #ffffff;
-            background-color: #007BFF;
+            background-color: #41bb09;
             text-decoration: none;
             border-radius: 5px;
             margin-top: 20px;
         }
         .button:hover {
-            background-color: #0056b3;
+            background-color: #179b05;
         }
     </style>
 </head>
@@ -63,13 +63,13 @@
 <div class="email-container">
     <!-- Header -->
     <div class="email-header">
-       Hidden Srilanka
+        Hidden Srilanka
     </div>
 
     <!-- Body -->
     <div class="email-body">
         <h1>Verify Your Account</h1>
-        <p>Hi [Recipient's Name],</p>
+        <p>Hi Nipun Sandeepa,</p>
         <p>We received a request to verify your email address. Use the OTP code below to proceed:</p>
         <div class="otp-code" th:text="${message}"></div>
         <p>This OTP code is valid for <strong>10 minutes</strong>.</p>
@@ -79,7 +79,7 @@
 
     <!-- Footer -->
     <div class="email-footer">
-        &copy; 2024 Your Company Name. All rights reserved.<br>
+        &copy; 2024 Hidden Srilanka. All rights reserved.<br>
         <a href="#">Privacy Policy</a> | <a href="#">Help Center</a>
     </div>
 </div>
