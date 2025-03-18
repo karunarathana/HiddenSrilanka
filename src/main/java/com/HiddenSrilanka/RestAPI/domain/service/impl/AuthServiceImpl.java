@@ -138,7 +138,7 @@ public class AuthServiceImpl implements AuthService {
             String setOpt = String.valueOf(random.nextInt((int) otpCode));
             int saveOtp = authManagementRepo.updateOTPByUserEmail(setOpt, userEmail);
             if(saveOtp !=0){
-//                sendHtmlEmail(userEmail,"","");
+                sendHtmlEmail(userEmail,"Hidden Srilanka OTP Code",setOpt);
                 baseForgotOTPResponse.setStatus("201");
                 baseForgotOTPResponse.setMessage("Otp send successfully");
                 return baseForgotOTPResponse;
