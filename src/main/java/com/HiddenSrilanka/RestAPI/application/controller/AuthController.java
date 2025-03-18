@@ -42,6 +42,13 @@ public class AuthController {
         logger.info("Request Completed IN authUpdatePassword |Response={}",response);
         return new ResponseEntity<>(response, HttpStatus.OK);
     }
+    @RequestMapping(value = Constant.FORGOT_USER_PASSWORD_UPDATE ,method = RequestMethod.GET)
+    public ResponseEntity<BasePasswordUpdateResponse> forgotUpdatePassword(@RequestParam("email") String email,@RequestParam("password")String password){
+        logger.info("Request Started IN forgotUpdatePassword |Email={} |Password{}",email,password);
+        BasePasswordUpdateResponse response = authService.updateForgotPassword(email,password);
+        logger.info("Request Completed IN forgotUpdatePassword |Response={}",response);
+        return new ResponseEntity<>(response, HttpStatus.OK);
+    }
     @RequestMapping(value = Constant.GET_ALL_USERS ,method = RequestMethod.GET)
     public ResponseEntity<BaseAllUserResponse> allUsers(){
         logger.info("Request Started IN allUsers");
@@ -49,7 +56,7 @@ public class AuthController {
         logger.info("Request Completed IN allUsers |Response={}",response);
         return new ResponseEntity<>(response, HttpStatus.OK);
     }
-    @RequestMapping(value = Constant.FORGOT_USER_PASSWORD ,method = RequestMethod.POST)
+    @RequestMapping(value = Constant.FORGOT_USER_PASSWORD ,method = RequestMethod.GET)
     public ResponseEntity<BaseForgotOTPResponse> forgotPassword(@RequestParam("email") String email){
         logger.info("Request Started IN forgotPassword");
         BaseForgotOTPResponse response = authService.forgotPassword(email);

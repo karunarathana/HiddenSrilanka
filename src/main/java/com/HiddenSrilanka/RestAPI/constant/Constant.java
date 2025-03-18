@@ -9,6 +9,7 @@ public class Constant {
     public static final String GET_ALL_USERS = "/get-all-user";
     public static final String UPDATE_USER_PASSWORD = "/update-user-password-by-email";
     public static final String FORGOT_USER_PASSWORD = "/forgot-user-password-by-email";
+    public static final String FORGOT_USER_PASSWORD_UPDATE = "/forgot-user-password-update-by-email";
 
     public static final String CREATE_PLACE = "/create-place";
     public static final String GET_ALL_PLACES = "/get-all-places";

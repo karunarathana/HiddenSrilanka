@@ -10,4 +10,5 @@ public interface AuthService {
     BaseAllUserResponse allUserDetails();
     BaseForgotOTPResponse forgotPassword(String userEmail);
     BaseForgotOTPResponse verifyOtpCode(String email,String otpCode);
+    BasePasswordUpdateResponse updateForgotPassword(String email,String password);
 }

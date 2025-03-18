@@ -37,7 +37,7 @@ public class AuthServiceImpl implements AuthService {
     public BaseCreateUserResponse createUser(UserManagementDTO userManagementDTO){
         logger.info("Method Execution Start In createUser |Data={}",userManagementDTO);
         BaseCreateUserResponse baseCreateUserResponse = new BaseCreateUserResponse();
-        Long existsByEmail = authManagementRepo.existsByEmailCount(userManagementDTO.getEmail());
+        int existsByEmail = authManagementRepo.existsByEmailCount(userManagementDTO.getEmail());
         if(existsByEmail!=1){
             UserManagementEntity userManagementEntity = setDataUserManagementEntity(userManagementDTO);
             authManagementRepo.save(userManagementEntity);
@@ -79,6 +79,7 @@ public class AuthServiceImpl implements AuthService {
             if(bCryptPasswordEncoder.matches(password,userDetails.getPassword())){
                 baseLoginUserResponse.setStatus("200");
                 baseLoginUserResponse.setMessage("Operation Successfully");
+                System.out.println(userDetails.getUserName());
                 baseLoginUserResponse.setUserData(userDetails);
                 return baseLoginUserResponse;
             }
@@ -127,9 +128,10 @@ public class AuthServiceImpl implements AuthService {
         return baseAllUserResponse;
     }
     public BaseForgotOTPResponse forgotPassword(String userEmail){
-        logger.info("Method Execution Start In forgotPassword");
+        logger.info("Method Execution Start In forgotPassword |email={}",userEmail);
         BaseForgotOTPResponse baseForgotOTPResponse = new BaseForgotOTPResponse();
-        Long existsByEmail = authManagementRepo.existsByEmailCount(userEmail);
+        int existsByEmail = authManagementRepo.existsByEmailCount(userEmail);
+        System.out.println("Exist"+existsByEmail);
         if(existsByEmail!=0){
             Random random = new Random();
             double otpCode = Math.random()*(900000-100000+1)+100000;
@@ -162,6 +164,21 @@ public class AuthServiceImpl implements AuthService {
         baseForgotOTPResponse.setMessage("OTP Code Not Match");
         return baseForgotOTPResponse;
     }
+
+    @Override
+    public BasePasswordUpdateResponse updateForgotPassword(String email, String password) {
+        logger.info("Method Execution Start In updateForgotPassword |email={} |password={}",email,password);
+        BasePasswordUpdateResponse basePasswordUpdateResponse = new BasePasswordUpdateResponse();
+        int isSuccessfully = authManagementRepo.updatePasswordByUserEmail(bCryptPasswordEncoder.encode(password),email);
+        System.out.println(isSuccessfully);
+        if(isSuccessfully==1){
+            basePasswordUpdateResponse.setStatus("201");
+            basePasswordUpdateResponse.setMessage("Password Update Successfully");
+            return basePasswordUpdateResponse;
+        }
+        return null;
+    }
+
     public boolean sendHtmlEmail(String to,String subject,String body){
         MimeMessage mimeMessage = javaMailSender.createMimeMessage();
         try {
