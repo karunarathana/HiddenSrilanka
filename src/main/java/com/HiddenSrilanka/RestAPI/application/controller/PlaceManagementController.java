@@ -2,6 +2,7 @@ package com.HiddenSrilanka.RestAPI.application.controller;
 
 import com.HiddenSrilanka.RestAPI.application.response.place.BaseAllPlacesDetails;
 import com.HiddenSrilanka.RestAPI.application.response.place.BaseCreatePlaceResponse;
+import com.HiddenSrilanka.RestAPI.application.response.place.BasePlaceDeleteResponse;
 import com.HiddenSrilanka.RestAPI.constant.Constant;
 import com.HiddenSrilanka.RestAPI.domain.dto.PlaceManagementDTO;
 import com.HiddenSrilanka.RestAPI.domain.service.PlaceManagementService;
@@ -50,5 +51,12 @@ public class PlaceManagementController {
         BaseAllPlacesDetails response = placeManagementService.getSinglePlaceDetailsById(Integer.parseInt(id));
         logger.info("Request Completed In singlePlace |Response={}",response);
         return new ResponseEntity<>(response, HttpStatus.CREATED);
+    }
+    @RequestMapping(value =Constant.DELETE_PLACE_BY_ID ,method = RequestMethod.DELETE)
+    public ResponseEntity<BasePlaceDeleteResponse> deleteSinglePlace(@RequestParam("id") String id){
+        logger.info("Request Started In deleteSinglePlace |PlaceId={}",id);
+        BasePlaceDeleteResponse response = placeManagementService.deletePlaceById(Integer.parseInt(id));
+        logger.info("Request Completed In deleteSinglePlace |Response={}",response);
+        return new ResponseEntity<>(response, HttpStatus.OK);
     }
 }

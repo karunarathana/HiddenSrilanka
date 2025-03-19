@@ -14,7 +14,7 @@ public class Constant {
     public static final String CREATE_PLACE = "/create-place";
     public static final String GET_ALL_PLACES = "/get-all-places";
     public static final String GET_SINGLE_PLACE_BY_ID = "/get-place-details-by-id";
-    public static final String DELETE_PLACE_BY_ID = "/create-place";
+    public static final String DELETE_PLACE_BY_ID = "/delete-place-by-id";
     public static final String UPDATE_PLACE_BY_ID = "/create-place";
     public static final String SEARCH_PLACE_BY_ID = "/create-place";
 }

@@ -3,6 +3,7 @@ package com.HiddenSrilanka.RestAPI.domain.service.impl;
 import com.HiddenSrilanka.RestAPI.application.response.place.AllPlacesResponse;
 import com.HiddenSrilanka.RestAPI.application.response.place.BaseAllPlacesDetails;
 import com.HiddenSrilanka.RestAPI.application.response.place.BaseCreatePlaceResponse;
+import com.HiddenSrilanka.RestAPI.application.response.place.BasePlaceDeleteResponse;
 import com.HiddenSrilanka.RestAPI.domain.dto.PlaceManagementDTO;
 import com.HiddenSrilanka.RestAPI.domain.model.PlaceManagementEntity;
 import com.HiddenSrilanka.RestAPI.domain.model.PlacesImagesEntity;
@@ -120,5 +121,16 @@ public class PlaceManagementServiceImpl implements PlaceManagementService {
         baseAllPlacesDetails.setData(null);
         logger.info("Method Execution Completed In getSinglePlaceDetailsById");
         return baseAllPlacesDetails;
+    }
+
+    @Override
+    public BasePlaceDeleteResponse deletePlaceById(int id) {
+        logger.info("Method Execution Started In deletePlaceById |PlaceID={}",id);
+        placeManagementRepo.deleteById(id);
+        logger.info("Method Execution Completed In deletePlaceById |PlaceID={}",id);
+        BasePlaceDeleteResponse basePlaceDeleteResponse = new BasePlaceDeleteResponse();
+        basePlaceDeleteResponse.setStatusCode("201");
+        basePlaceDeleteResponse.setMessage("Place Delete Successfully");
+        return basePlaceDeleteResponse;
     }
 }
