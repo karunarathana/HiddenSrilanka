@@ -17,4 +17,7 @@ public class Constant {
     public static final String DELETE_PLACE_BY_ID = "/delete-place-by-id";
     public static final String UPDATE_PLACE_BY_ID = "/create-place";
     public static final String SEARCH_PLACE_BY_ID = "/create-place";
+
+    public static final String CREATE_HOTEL = "/create-hotel";
+    public static final String GET_ALL_HOTELS = "/get-all-hotels";
 }

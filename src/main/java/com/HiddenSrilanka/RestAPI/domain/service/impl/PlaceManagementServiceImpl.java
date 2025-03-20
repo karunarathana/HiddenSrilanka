@@ -1,6 +1,6 @@
 package com.HiddenSrilanka.RestAPI.domain.service.impl;
 
-import com.HiddenSrilanka.RestAPI.application.response.place.AllPlacesResponse;
+import com.HiddenSrilanka.RestAPI.application.response.place.AllPlaceResponse;
 import com.HiddenSrilanka.RestAPI.application.response.place.BaseAllPlacesDetails;
 import com.HiddenSrilanka.RestAPI.application.response.place.BaseCreatePlaceResponse;
 import com.HiddenSrilanka.RestAPI.application.response.place.BasePlaceDeleteResponse;
@@ -68,9 +68,9 @@ public class PlaceManagementServiceImpl implements PlaceManagementService {
     public BaseAllPlacesDetails getAllPlaceDetails(){
         logger.info("Method Execution Started In getAllPlaceDetails");
         List<PlaceManagementEntity> allPlaces = placeManagementRepo.findAll();
-        List<AllPlacesResponse> data = new ArrayList<>();
+        List<AllPlaceResponse> data = new ArrayList<>();
         for (PlaceManagementEntity place : allPlaces) {
-            AllPlacesResponse allPlacesResponse = new AllPlacesResponse();
+            AllPlaceResponse allPlacesResponse = new AllPlaceResponse();
             allPlacesResponse.setId(place.getPlaceId());
             allPlacesResponse.setCity(place.getCity());
             allPlacesResponse.setCountry(place.getCountry());
@@ -96,8 +96,8 @@ public class PlaceManagementServiceImpl implements PlaceManagementService {
         Optional<PlaceManagementEntity> byId = placeManagementRepo.findById(id);
         BaseAllPlacesDetails baseAllPlacesDetails = new BaseAllPlacesDetails();
         if(byId.isPresent()){
-            List<AllPlacesResponse> data = new ArrayList<>();
-            AllPlacesResponse allPlacesResponse = new AllPlacesResponse();
+            List<AllPlaceResponse> data = new ArrayList<>();
+            AllPlaceResponse allPlacesResponse = new AllPlaceResponse();
             allPlacesResponse.setId(byId.get().getPlaceId());
             allPlacesResponse.setCity(byId.get().getCity());
             allPlacesResponse.setCountry(byId.get().getCountry());

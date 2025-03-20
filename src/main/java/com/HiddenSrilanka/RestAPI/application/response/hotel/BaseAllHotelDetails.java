@@ -1,11 +1,11 @@
-package com.HiddenSrilanka.RestAPI.application.response.place;
+package com.HiddenSrilanka.RestAPI.application.response.hotel;
 
 import java.util.List;
 
-public class BaseAllPlacesDetails {
+public class BaseAllHotelDetails {
     private String StatusCode;
     private String message;
-    private List<AllPlaceResponse> data;
+    private List<AllHotelResponse> data;
 
     public String getStatusCode() {
         return StatusCode;
@@ -23,11 +23,11 @@ public class BaseAllPlacesDetails {
         this.message = message;
     }
 
-    public List<AllPlaceResponse> getData() {
+    public List<AllHotelResponse> getData() {
         return data;
     }
 
-    public void setData(List<AllPlaceResponse> data) {
+    public void setData(List<AllHotelResponse> data) {
         this.data = data;
     }
 }
