@@ -1,41 +1,40 @@
-package com.HiddenSrilanka.RestAPI.application.response.place;
+package com.HiddenSrilanka.RestAPI.domain.dto;
 
-import java.util.List;
-
-public class AllPlacesResponse {
-    private int Id;
-    private String placeName;
-    private String placeAddress;
+public class HotelManagementDTO {
+    private String hotelName;
+    private String address;
     private String description;
     private String city;
+    private String contactNumber;
+    private String hotelEmail;
     private String country;
     private Double latitude;
     private Double longitude;
     private String priceRange;
-    private List<byte[]> images;
+    private String createUser;
 
-    public int getId() {
-        return Id;
+    public String getCreateUser() {
+        return createUser;
     }
 
-    public void setId(int id) {
-        Id = id;
+    public void setCreateUser(String createUser) {
+        this.createUser = createUser;
     }
 
-    public String getPlaceName() {
-        return placeName;
+    public String getHotelName() {
+        return hotelName;
     }
 
-    public void setPlaceName(String placeName) {
-        this.placeName = placeName;
+    public void setHotelName(String hotelName) {
+        this.hotelName = hotelName;
     }
 
-    public String getPlaceAddress() {
-        return placeAddress;
+    public String getAddress() {
+        return address;
     }
 
-    public void setPlaceAddress(String placeAddress) {
-        this.placeAddress = placeAddress;
+    public void setAddress(String address) {
+        this.address = address;
     }
 
     public String getDescription() {
@@ -86,11 +85,19 @@ public class AllPlacesResponse {
         this.priceRange = priceRange;
     }
 
-    public List<byte[]> getImages() {
-        return images;
+    public String getContactNumber() {
+        return contactNumber;
     }
 
-    public void setImages(List<byte[]> images) {
-        this.images = images;
+    public void setContactNumber(String contactNumber) {
+        this.contactNumber = contactNumber;
+    }
+
+    public String getHotelEmail() {
+        return hotelEmail;
+    }
+
+    public void setHotelEmail(String hotelEmail) {
+        this.hotelEmail = hotelEmail;
     }
 }
