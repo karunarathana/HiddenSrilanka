@@ -20,4 +20,11 @@ public class Constant {
 
     public static final String CREATE_HOTEL = "/create-hotel";
     public static final String GET_ALL_HOTELS = "/get-all-hotels";
+
+    public static final String CREATE_ORDER= "/create-order";
+    public static final String GET_ALL_ORDER_DETAILS_BROKER_ID= "/get-all-order-details-by-broker-id";
+    public static final String GET_ALL_ORDER_DETAILS_USER_ID= "/get-all-order-details-by-user-id";
+    public static final String UPDATE_ORDER_STATUS= "/update-order-status";
+    public static final String DELETE_ORDER_DETAILS= "/delete-order-details";
+
 }
