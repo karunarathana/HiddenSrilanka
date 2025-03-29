@@ -47,16 +47,16 @@ public class OrderManagementController {
         return new ResponseEntity<>(response, HttpStatus.CREATED);
     }
     @RequestMapping(value =Constant.UPDATE_ORDER_STATUS ,method = RequestMethod.POST)
-    public ResponseEntity<BaseUpdateOrderResponse> updateOrderDetails(@RequestParam("orderId") String orderID) throws IOException {
+    public ResponseEntity<BaseUpdateOrderResponse> updateOrderDetails(@RequestParam("orderId") String orderID,@RequestParam("status") String status) throws IOException {
         logger.info("Request Started In updateOrderDetails |OrderID={}",orderID);
-        BaseUpdateOrderResponse response = orderManagementService.updateOrderDetails(orderID);
+        BaseUpdateOrderResponse response = orderManagementService.updateOrderDetails(status,orderID);
         logger.info("Request Completed In updateOrderDetails |Response={}",response);
         return new ResponseEntity<>(response, HttpStatus.CREATED);
     }
     @RequestMapping(value =Constant.DELETE_ORDER_DETAILS ,method = RequestMethod.DELETE)
     public ResponseEntity<BaseUpdateOrderResponse> deleteOrderDetails(@RequestParam("orderId") String orderID) throws IOException {
         logger.info("Request Started In deleteOrderDetails |OrderID={}",orderID);
-        BaseUpdateOrderResponse response = orderManagementService.updateOrderDetails(orderID);
+        BaseUpdateOrderResponse response = orderManagementService.deleteOrderDetails(orderID);
         logger.info("Request Completed In deleteOrderDetails |Response={}",response);
         return new ResponseEntity<>(response, HttpStatus.CREATED);
     }

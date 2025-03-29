@@ -10,6 +10,6 @@ public interface OrderManagementService {
     BaseOrderManagementResponse createOrder(OrderManagementDTO orderManagementDTO);
     BaseOrderDetailsResponse getOrderDetailsByBrokerId(String brokerId);
     BaseOrderDetailsResponse getOrderDetailsByUserId(String userId);
-    BaseUpdateOrderResponse updateOrderDetails(String orderID);
+    BaseUpdateOrderResponse updateOrderDetails(String status,String orderID);
     BaseUpdateOrderResponse deleteOrderDetails(String orderID);
 }

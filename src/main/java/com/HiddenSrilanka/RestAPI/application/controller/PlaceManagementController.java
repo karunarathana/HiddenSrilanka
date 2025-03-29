@@ -3,6 +3,7 @@ package com.HiddenSrilanka.RestAPI.application.controller;
 import com.HiddenSrilanka.RestAPI.application.response.place.BaseAllPlacesDetails;
 import com.HiddenSrilanka.RestAPI.application.response.place.BaseCreatePlaceResponse;
 import com.HiddenSrilanka.RestAPI.application.response.place.BasePlaceDeleteResponse;
+import com.HiddenSrilanka.RestAPI.application.response.product.BaseAllProductDetails;
 import com.HiddenSrilanka.RestAPI.constant.Constant;
 import com.HiddenSrilanka.RestAPI.domain.dto.PlaceManagementDTO;
 import com.HiddenSrilanka.RestAPI.domain.service.PlaceManagementService;
@@ -58,5 +59,19 @@ public class PlaceManagementController {
         BasePlaceDeleteResponse response = placeManagementService.deletePlaceById(Integer.parseInt(id));
         logger.info("Request Completed In deleteSinglePlace |Response={}",response);
         return new ResponseEntity<>(response, HttpStatus.OK);
+    }
+    @RequestMapping(value =Constant.SEARCH_PLACE_BY_CITY ,method = RequestMethod.GET)
+    public ResponseEntity<BaseAllPlacesDetails> searchPlaceByCity(@RequestParam("city") String city){
+        logger.info("Request Started In searchPlaceByCity |PlaceId={}",city);
+        BaseAllPlacesDetails response = placeManagementService.getPlaceDetailsByCity(city);
+        logger.info("Request Completed In searchPlaceByCity |Response={}",response);
+        return new ResponseEntity<>(response, HttpStatus.OK);
+    }
+    @RequestMapping(value =Constant.UPDATE_PLACE_STATUS ,method = RequestMethod.POST)
+    public ResponseEntity<BaseCreatePlaceResponse> updatePlaceStatus(@RequestParam("placeId") String placeId,@RequestParam("status") String status){
+        logger.info("Request Started In updatePlaceStatus ");
+        BaseCreatePlaceResponse response = placeManagementService.updatePlaceStatus(placeId,status);
+        logger.info("Request Completed In updatePlaceStatus |Response={}",response);
+        return new ResponseEntity<>(response, HttpStatus.CREATED);
     }
 }

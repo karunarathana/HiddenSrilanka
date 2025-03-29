@@ -55,6 +55,8 @@ public class PlaceManagementServiceImpl implements PlaceManagementService {
         placeManagementEntity.setLatitude(placeManagementDTO.getLatitude());
         placeManagementEntity.setLongitude(placeManagementDTO.getLongitude());
         placeManagementEntity.setPriceRange(placeManagementDTO.getPriceRange());
+        placeManagementEntity.setCreateUser(placeManagementDTO.getCreateUser());
+        placeManagementEntity.setStatus("Pending");
 
         for (MultipartFile data :images){
             PlacesImagesEntity placesImagesEntity = new PlacesImagesEntity();
@@ -80,6 +82,8 @@ public class PlaceManagementServiceImpl implements PlaceManagementService {
             allPlacesResponse.setLatitude(place.getLatitude());
             allPlacesResponse.setLongitude(place.getLongitude());
             allPlacesResponse.setPriceRange(place.getPriceRange());
+            allPlacesResponse.setCreateUser(place.getCreateUser());
+            allPlacesResponse.setStatus(place.getStatus());
             List<byte[]> allImageForOnePlace = placeImagesRepo.getAllImageForOnePlace(place.getPlaceId());
             allPlacesResponse.setImages(allImageForOnePlace);
             data.add(allPlacesResponse);
@@ -107,6 +111,7 @@ public class PlaceManagementServiceImpl implements PlaceManagementService {
             allPlacesResponse.setLatitude(byId.get().getLatitude());
             allPlacesResponse.setLongitude(byId.get().getLongitude());
             allPlacesResponse.setPriceRange(byId.get().getPriceRange());
+            allPlacesResponse.setCreateUser(byId.get().getCreateUser());
             List<byte[]> allImageForOnePlace = placeImagesRepo.getAllImageForOnePlace(byId.get().getPlaceId());
             allPlacesResponse.setImages(allImageForOnePlace);
             data.add(allPlacesResponse);
@@ -132,5 +137,52 @@ public class PlaceManagementServiceImpl implements PlaceManagementService {
         basePlaceDeleteResponse.setStatusCode("201");
         basePlaceDeleteResponse.setMessage("Place Delete Successfully");
         return basePlaceDeleteResponse;
+    }
+
+    @Override
+    public BaseAllPlacesDetails getPlaceDetailsByCity(String city) {
+        logger.info("Method Execution Started In deletePlaceById |getPlaceDetailsByCity={}",city);
+        BaseAllPlacesDetails baseAllPlacesDetails = new BaseAllPlacesDetails();
+        Optional<ArrayList<PlaceManagementEntity>> allPlaces = placeManagementRepo.getPlaceDetailsByCity(city);//Custom query
+        if(allPlaces.isPresent()) {
+            List<AllPlaceResponse> data = new ArrayList<>();
+            for (PlaceManagementEntity place : allPlaces.get()) {
+                AllPlaceResponse allPlacesResponse = new AllPlaceResponse();
+                allPlacesResponse.setId(place.getPlaceId());
+                allPlacesResponse.setCity(place.getCity());
+                allPlacesResponse.setCountry(place.getCountry());
+                allPlacesResponse.setPlaceName(place.getPlaceName());
+                allPlacesResponse.setPlaceAddress(place.getPlaceAddress());
+                allPlacesResponse.setDescription(place.getDescription());
+                allPlacesResponse.setLatitude(place.getLatitude());
+                allPlacesResponse.setLongitude(place.getLongitude());
+                allPlacesResponse.setPriceRange(place.getPriceRange());
+                allPlacesResponse.setCreateUser(place.getCreateUser());
+                List<byte[]> allImageForOnePlace = placeImagesRepo.getAllImageForOnePlace(place.getPlaceId());
+                allPlacesResponse.setImages(allImageForOnePlace);
+                data.add(allPlacesResponse);
+            }
+            baseAllPlacesDetails.setStatusCode("200");
+            baseAllPlacesDetails.setMessage("Operation Successfully");
+            baseAllPlacesDetails.setData(data);
+            return baseAllPlacesDetails;
+        }
+        baseAllPlacesDetails.setStatusCode("200");
+        baseAllPlacesDetails.setMessage("Operation Successfully");
+        baseAllPlacesDetails.setData(null);
+        logger.info("Method Execution Completed In getPlaceDetailsByCity");
+        return baseAllPlacesDetails;
+    }
+
+    @Override
+    public BaseCreatePlaceResponse updatePlaceStatus(String placeId,String status) {
+        logger.info("Method Execution Started In updatePlaceStatus");
+        placeManagementRepo.updateStatusByPlaceId(status, Integer.parseInt(placeId));
+        logger.info("Method Execution Completed In updatePlaceStatus");
+
+        BaseCreatePlaceResponse baseCreatePlaceResponse = new BaseCreatePlaceResponse();
+        baseCreatePlaceResponse.setStatusCode("200");
+        baseCreatePlaceResponse.setMessage("Update Successfully");
+        return baseCreatePlaceResponse;
     }
 }

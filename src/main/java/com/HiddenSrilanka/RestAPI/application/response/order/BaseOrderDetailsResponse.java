@@ -7,7 +7,7 @@ import java.util.List;
 public class BaseOrderDetailsResponse {
     private String statusCode;
     private String message;
-    private List<OrderManagementEntity> orderManagementEntities;
+    private List<OrderManagementEntity> data;
 
     public String getStatusCode() {
         return statusCode;
@@ -25,11 +25,11 @@ public class BaseOrderDetailsResponse {
         this.message = message;
     }
 
-    public List<OrderManagementEntity> getOrderManagementEntities() {
-        return orderManagementEntities;
+    public List<OrderManagementEntity> getData() {
+        return data;
     }
 
-    public void setOrderManagementEntities(List<OrderManagementEntity> orderManagementEntities) {
-        this.orderManagementEntities = orderManagementEntities;
+    public void setData(List<OrderManagementEntity> data) {
+        this.data = data;
     }
 }

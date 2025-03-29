@@ -14,4 +14,6 @@ public interface PlaceManagementService {
     BaseAllPlacesDetails getAllPlaceDetails();
     BaseAllPlacesDetails getSinglePlaceDetailsById(int id);
     BasePlaceDeleteResponse deletePlaceById(int id);
+    BaseAllPlacesDetails getPlaceDetailsByCity(String city);
+    BaseCreatePlaceResponse updatePlaceStatus(String placeId,String status);
 }

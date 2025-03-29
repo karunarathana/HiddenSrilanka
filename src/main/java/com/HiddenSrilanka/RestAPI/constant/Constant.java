@@ -15,8 +15,8 @@ public class Constant {
     public static final String GET_ALL_PLACES = "/get-all-places";
     public static final String GET_SINGLE_PLACE_BY_ID = "/get-place-details-by-id";
     public static final String DELETE_PLACE_BY_ID = "/delete-place-by-id";
-    public static final String UPDATE_PLACE_BY_ID = "/create-place";
-    public static final String SEARCH_PLACE_BY_ID = "/create-place";
+    public static final String UPDATE_PLACE_STATUS = "/update-place-status";
+    public static final String SEARCH_PLACE_BY_CITY = "/search-place";
 
     public static final String CREATE_HOTEL = "/create-hotel";
     public static final String GET_ALL_HOTELS = "/get-all-hotels";
@@ -26,5 +26,8 @@ public class Constant {
     public static final String GET_ALL_ORDER_DETAILS_USER_ID= "/get-all-order-details-by-user-id";
     public static final String UPDATE_ORDER_STATUS= "/update-order-status";
     public static final String DELETE_ORDER_DETAILS= "/delete-order-details";
+
+    public static final String CREATE_PRODUCT= "/create-product";
+    public static final String GET_ALL_PRODUCT = "/get-all-product";
 
 }

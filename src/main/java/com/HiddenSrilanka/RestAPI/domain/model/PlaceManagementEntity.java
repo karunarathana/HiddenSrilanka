@@ -19,6 +19,8 @@ public class PlaceManagementEntity {
     private Double latitude;
     private Double longitude;
     private String priceRange;
+    private String createUser;
+    private String status;
 
     // One-to-many relationship with PlaceImage
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
@@ -105,4 +107,19 @@ public class PlaceManagementEntity {
         this.placesImagesEntities = placesImagesEntities;
     }
 
+    public String getCreateUser() {
+        return createUser;
+    }
+
+    public void setCreateUser(String createUser) {
+        this.createUser = createUser;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
 }

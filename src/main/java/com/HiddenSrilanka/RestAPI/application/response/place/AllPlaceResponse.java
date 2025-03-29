@@ -12,6 +12,8 @@ public class AllPlaceResponse {
     private Double latitude;
     private Double longitude;
     private String priceRange;
+    private String createUser;
+    private String status;
     private List<byte[]> images;
 
     public int getId() {
@@ -92,5 +94,21 @@ public class AllPlaceResponse {
 
     public void setImages(List<byte[]> images) {
         this.images = images;
+    }
+
+    public String getCreateUser() {
+        return createUser;
+    }
+
+    public void setCreateUser(String createUser) {
+        this.createUser = createUser;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
     }
 }
