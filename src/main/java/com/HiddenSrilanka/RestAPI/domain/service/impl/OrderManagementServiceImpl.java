@@ -53,12 +53,12 @@ public class OrderManagementServiceImpl implements OrderManagementService {
         if (orderDetailsByBrokerId.isPresent()){
             baseOrderDetailsResponse.setStatusCode("201");
             baseOrderDetailsResponse.setMessage("Operation Successfully");
-            baseOrderDetailsResponse.setOrderManagementEntities(orderDetailsByBrokerId.get());
+            baseOrderDetailsResponse.setData(orderDetailsByBrokerId.get());
             return baseOrderDetailsResponse;
         }
         baseOrderDetailsResponse.setStatusCode("401");
         baseOrderDetailsResponse.setMessage("Operation Failed!");
-        baseOrderDetailsResponse.setOrderManagementEntities(null);
+        baseOrderDetailsResponse.setData(null);
         return baseOrderDetailsResponse;
 
 
@@ -72,20 +72,20 @@ public class OrderManagementServiceImpl implements OrderManagementService {
         if (orderDetailsByUserId.isPresent()){
             baseOrderDetailsResponse.setStatusCode("201");
             baseOrderDetailsResponse.setMessage("Operation Successfully");
-            baseOrderDetailsResponse.setOrderManagementEntities(orderDetailsByUserId.get());
+            baseOrderDetailsResponse.setData(orderDetailsByUserId.get());
             return baseOrderDetailsResponse;
         }
         baseOrderDetailsResponse.setStatusCode("401");
         baseOrderDetailsResponse.setMessage("Operation Failed!");
-        baseOrderDetailsResponse.setOrderManagementEntities(null);
+        baseOrderDetailsResponse.setData(null);
         return baseOrderDetailsResponse;
     }
 
     @Override
-    public BaseUpdateOrderResponse updateOrderDetails(String orderID) {
+    public BaseUpdateOrderResponse updateOrderDetails(String status,String orderID) {
         logger.info("Method Execution Start In updateOrderDetails |OrderID={}",orderID);
         BaseUpdateOrderResponse baseUpdateOrderResponse = new BaseUpdateOrderResponse();
-        int accept = orderManagementRepo.updateStatusByOrderId("Accept", orderID);
+        int accept = orderManagementRepo.updateStatusByOrderId(status, orderID);
         if (accept == 1){
             baseUpdateOrderResponse.setMessage("Update Successfully");
             baseUpdateOrderResponse.setStatusCode("201");
